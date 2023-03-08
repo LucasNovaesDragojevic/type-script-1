@@ -1,14 +1,9 @@
 import { Trades } from "../models/trades.js"
+import { View } from "./view.js"
 
-export class TradeView {
-    
-    private element: HTMLElement
+export class TradeView extends View<Trades> {
 
-    constructor(selector: string) {
-        this.element = document.querySelector(selector)
-    }
-
-    private template(trades: Trades): string {
+    protected template(trades: Trades): string {
         return `
             <table class="table table-hover table-bordered">
                 <thead>
@@ -31,9 +26,5 @@ export class TradeView {
                 </tbody>
             </table>
         `
-    }
-
-    update(trades: Trades): void {
-        this.element.innerHTML = this.template(trades)
     }
 }

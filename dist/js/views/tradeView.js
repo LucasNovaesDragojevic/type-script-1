@@ -1,7 +1,5 @@
-export class TradeView {
-    constructor(selector) {
-        this.element = document.querySelector(selector);
-    }
+import { View } from "./view.js";
+export class TradeView extends View {
     template(trades) {
         return `
             <table class="table table-hover table-bordered">
@@ -25,8 +23,5 @@ export class TradeView {
                 </tbody>
             </table>
         `;
-    }
-    update(trades) {
-        this.element.innerHTML = this.template(trades);
     }
 }

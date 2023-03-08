@@ -1,5 +1,6 @@
 import { Trade } from "../models/trade.js"
 import { Trades } from "../models/trades.js"
+import { MessageView } from "../views/messageView.js"
 import { TradeView } from "../views/tradeView.js"
 
 export class TradingController {
@@ -8,6 +9,7 @@ export class TradingController {
     private inputValue: HTMLInputElement
     private trades = new Trades()
     private tradeView = new TradeView('#tradeView')
+    private messageView = new MessageView('#messageView')
 
     constructor() {
         this.inputDate = document.querySelector('#date')
@@ -21,6 +23,7 @@ export class TradingController {
         this.trades.add(trade)
         console.log(this.trades.list())
         this.tradeView.update(this.trades)
+        this.messageView.update('Trade added.')
         this.clearFom()
     }
     
