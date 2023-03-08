@@ -1,5 +1,8 @@
-import { Trading } from './models/trading.js'
+import { TradingController } from "./controllers/tradingController.js";
 
-const trading = new Trading(new Date(), 10, 100)
-
-console.log(trading.amount)
+const controller = new TradingController
+const form = document.querySelector('#form')
+form.addEventListener('submit', event => {
+    event.preventDefault()
+    controller.add()
+})
