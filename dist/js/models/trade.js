@@ -1,4 +1,4 @@
-export class Trading {
+export class Trade {
     constructor(date, quantity, value) {
         this._date = date;
         this._quantity = quantity;

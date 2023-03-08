@@ -1,4 +1,4 @@
-export class Trading {
+export class Trade {
     
     private _date: Date
     private _quantity: number
