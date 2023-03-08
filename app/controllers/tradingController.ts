@@ -20,7 +20,6 @@ export class TradingController {
         this.clearFom()
     }
     
-
     private createTrading(): Trade {
         const exp = /-/g
         const date = new Date(this.inputDate.value.replace(exp, ','))
