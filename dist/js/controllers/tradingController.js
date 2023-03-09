@@ -1,7 +1,8 @@
-import { Trade } from "../models/trade.js";
-import { Trades } from "../models/trades.js";
-import { MessageView } from "../views/messageView.js";
-import { TradeView } from "../views/tradeView.js";
+import { DayOfWeek } from '../enums/dayOfWeek.js';
+import { Trade } from '../models/trade.js';
+import { Trades } from '../models/trades.js';
+import { MessageView } from '../views/messageView.js';
+import { TradeView } from '../views/tradeView.js';
 export class TradingController {
     constructor() {
         this.trades = new Trades();
@@ -14,11 +15,21 @@ export class TradingController {
     }
     add() {
         const trade = this.createTrading();
+        if (!this.isBusinessDay(trade.date)) {
+            this.messageView.update('Only business days are accepted.');
+            return;
+        }
         this.trades.add(trade);
         console.log(this.trades.list());
+        this.updateView();
+        this.clearFom();
+    }
+    isBusinessDay(date) {
+        return date.getDay() > DayOfWeek.SUNDAY && date.getDay() < DayOfWeek.SATURDAY;
+    }
+    updateView() {
         this.tradeView.update(this.trades);
         this.messageView.update('Trade added.');
-        this.clearFom();
     }
     createTrading() {
         const exp = /-/g;

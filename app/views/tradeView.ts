@@ -1,3 +1,4 @@
+import { Trade } from "../models/trade.js"
 import { Trades } from "../models/trades.js"
 import { View } from "./view.js"
 
@@ -17,7 +18,7 @@ export class TradeView extends View<Trades> {
                     ${trades.list().map(trade => {
                         return `
                             <tr>
-                                <td>${new Intl.DateTimeFormat().format(trade.date)}</td>
+                                <td>${this.formatDate(trade.date)}</td>
                                 <td>${trade.quantity}</td>
                                 <td>${trade.value}</td>
                             </tr>
@@ -26,5 +27,9 @@ export class TradeView extends View<Trades> {
                 </tbody>
             </table>
         `
+    }
+
+    private formatDate(date: Date) {
+        return new Intl.DateTimeFormat().format(date)
     }
 }
