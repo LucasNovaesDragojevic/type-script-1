@@ -12,4 +12,12 @@ export class Trade {
     get amount(): number {
         return this.quantity * this.value
     }
+
+    static createFrom(dateString: string, quantityString: string, valueString: string) {
+        const exp = /-/g
+        const date = new Date(dateString.replace(exp, ','))
+        const quantity = parseInt(quantityString)
+        const value = parseFloat(valueString)
+        return new Trade(date, quantity, value)
+    }
 }

@@ -9,7 +9,7 @@ export class TradingController {
     private inputQuantity: HTMLInputElement
     private inputValue: HTMLInputElement
     private trades = new Trades()
-    private tradeView = new TradeView('#tradeView')
+    private tradeView = new TradeView('#tradeView', true)
     private messageView = new MessageView('#messageView')
 
     constructor() {
@@ -20,7 +20,7 @@ export class TradingController {
     }
 
     add() {
-        const trade = this.createTrading()
+        const trade = Trade.createFrom(this.inputDate.value, this.inputQuantity.value, this.inputValue.value)
 
         if (!this.isBusinessDay(trade.date)) {
             this.messageView.update('Only business days are accepted.')
@@ -30,7 +30,7 @@ export class TradingController {
         this.trades.add(trade)
         console.log(this.trades.list())
         this.updateView()
-        this.clearFom()
+        this.clearForm()
     }
     
     private isBusinessDay(date: Date) {
@@ -42,15 +42,7 @@ export class TradingController {
         this.messageView.update('Trade added.')
     }
 
-    private createTrading() {
-        const exp = /-/g
-        const date = new Date(this.inputDate.value.replace(exp, ','))
-        const quantity = parseInt(this.inputQuantity.value)
-        const value = parseFloat(this.inputValue.value)
-        return new Trade(date, quantity, value)
-    }
-
-    private clearFom() {
+    private clearForm() {
         this.inputDate.value = ''
         this.inputQuantity.value = ''
         this.inputValue.value = ''

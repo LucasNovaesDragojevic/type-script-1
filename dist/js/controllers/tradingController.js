@@ -6,7 +6,7 @@ import { TradeView } from '../views/tradeView.js';
 export class TradingController {
     constructor() {
         this.trades = new Trades();
-        this.tradeView = new TradeView('#tradeView');
+        this.tradeView = new TradeView('#tradeView', true);
         this.messageView = new MessageView('#messageView');
         this.inputDate = document.querySelector('#date');
         this.inputQuantity = document.querySelector('#quantity');
@@ -14,7 +14,7 @@ export class TradingController {
         this.tradeView.update(this.trades);
     }
     add() {
-        const trade = this.createTrading();
+        const trade = Trade.createFrom(this.inputDate.value, this.inputQuantity.value, this.inputValue.value);
         if (!this.isBusinessDay(trade.date)) {
             this.messageView.update('Only business days are accepted.');
             return;
@@ -22,7 +22,7 @@ export class TradingController {
         this.trades.add(trade);
         console.log(this.trades.list());
         this.updateView();
-        this.clearFom();
+        this.clearForm();
     }
     isBusinessDay(date) {
         return date.getDay() > DayOfWeek.SUNDAY && date.getDay() < DayOfWeek.SATURDAY;
@@ -31,14 +31,7 @@ export class TradingController {
         this.tradeView.update(this.trades);
         this.messageView.update('Trade added.');
     }
-    createTrading() {
-        const exp = /-/g;
-        const date = new Date(this.inputDate.value.replace(exp, ','));
-        const quantity = parseInt(this.inputQuantity.value);
-        const value = parseFloat(this.inputValue.value);
-        return new Trade(date, quantity, value);
-    }
-    clearFom() {
+    clearForm() {
         this.inputDate.value = '';
         this.inputQuantity.value = '';
         this.inputValue.value = '';
