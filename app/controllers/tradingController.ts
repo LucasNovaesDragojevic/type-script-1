@@ -13,9 +13,9 @@ export class TradingController {
     private messageView = new MessageView('#messageView')
 
     constructor() {
-        this.inputDate = document.querySelector('#date')
-        this.inputQuantity = document.querySelector('#quantity')
-        this.inputValue = document.querySelector('#value')
+        this.inputDate = document.querySelector('#date') as HTMLInputElement
+        this.inputQuantity = document.querySelector('#quantity') as HTMLInputElement
+        this.inputValue = document.querySelector('#value') as HTMLInputElement
         this.tradeView.update(this.trades)
     }
 
