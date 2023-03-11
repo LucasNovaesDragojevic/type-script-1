@@ -10,3 +10,12 @@ if (form) {
 else {
     throw new Error('Unable to start the application. Please check that the form is created.');
 }
+const btnImport = document.querySelector('#btn-import');
+if (btnImport) {
+    btnImport.addEventListener('click', () => {
+        controller.importData();
+    });
+}
+else {
+    throw new Error('Unable to start the application. Please check that the btn-import is created.');
+}

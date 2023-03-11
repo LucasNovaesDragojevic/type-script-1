@@ -9,12 +9,14 @@ import { logPerformance } from '../decorators/logPerformance.js';
 import { DayOfWeek } from '../enums/dayOfWeek.js';
 import { Trade } from '../models/trade.js';
 import { Trades } from '../models/trades.js';
+import { TradeService } from '../services/tradeService.js';
 import { MessageView } from '../views/messageView.js';
 import { TradeView } from '../views/tradeView.js';
 export class TradingController {
     constructor() {
         this.trades = new Trades();
         this.tradeView = new TradeView('#tradeView');
+        this.tradeService = new TradeService();
         this.messageView = new MessageView('#messageView');
         this.tradeView.update(this.trades);
     }
@@ -28,6 +30,14 @@ export class TradingController {
         console.log(this.trades.list());
         this.updateView();
         this.clearForm();
+    }
+    importData() {
+        this.tradeService
+            .getTradesOfDay()
+            .then(tradesToday => {
+            this.trades.addAll(tradesToday);
+            this.tradeView.update(this.trades);
+        });
     }
     isBusinessDay(date) {
         return date.getDay() > DayOfWeek.SUNDAY && date.getDay() < DayOfWeek.SATURDAY;

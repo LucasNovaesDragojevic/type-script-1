@@ -1,8 +1,10 @@
 import { domInject } from '../decorators/domInject.js'
 import { logPerformance } from '../decorators/logPerformance.js'
 import { DayOfWeek } from '../enums/dayOfWeek.js'
+import { TradeToday } from '../interfaces/tradeToday.js'
 import { Trade } from '../models/trade.js'
 import { Trades } from '../models/trades.js'
+import { TradeService } from '../services/tradeService.js'
 import { MessageView } from '../views/messageView.js'
 import { TradeView } from '../views/tradeView.js'
 
@@ -19,6 +21,7 @@ export class TradingController {
     
     private trades = new Trades()
     private tradeView = new TradeView('#tradeView')
+    private tradeService = new TradeService()
     private messageView = new MessageView('#messageView')
 
     constructor() {
@@ -38,6 +41,15 @@ export class TradingController {
         console.log(this.trades.list())
         this.updateView()
         this.clearForm()
+    }
+
+    importData() {
+        this.tradeService
+            .getTradesOfDay()
+            .then(tradesToday => {
+                this.trades.addAll(tradesToday)
+                this.tradeView.update(this.trades)
+            })
     }
     
     private isBusinessDay(date: Date) {

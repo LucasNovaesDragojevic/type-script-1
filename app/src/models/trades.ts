@@ -7,6 +7,10 @@ export class Trades {
         this.trades.push(trade)
     }
 
+    addAll(newTrades: Trade[]) {
+        this.trades.push(...newTrades)
+    }
+
     list(): readonly Trade[] {
         return this.trades
     }
