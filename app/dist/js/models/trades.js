@@ -18,3 +18,4 @@ export class Trades {
         return JSON.stringify(this.trades);
     }
 }
+//# sourceMappingURL=trades.js.map

@@ -39,3 +39,4 @@ export class TradeView extends View {
 __decorate([
     escape
 ], TradeView.prototype, "template", null);
+//# sourceMappingURL=tradeView.js.map

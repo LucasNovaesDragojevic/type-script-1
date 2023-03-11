@@ -29,3 +29,4 @@ export class Trade {
             this._date.getFullYear() == trade._date.getFullYear();
     }
 }
+//# sourceMappingURL=trade.js.map

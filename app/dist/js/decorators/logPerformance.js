@@ -16,3 +16,4 @@ export function logPerformance(showSeconds = false) {
         return descriptor;
     };
 }
+//# sourceMappingURL=logPerformance.js.map

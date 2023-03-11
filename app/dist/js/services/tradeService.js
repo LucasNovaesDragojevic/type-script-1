@@ -6,3 +6,4 @@ export class TradeService {
             .then((datas) => datas.map(data => new Trade(new Date(), data.vezes, data.montante)));
     }
 }
+//# sourceMappingURL=tradeService.js.map

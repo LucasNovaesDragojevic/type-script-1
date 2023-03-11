@@ -67,3 +67,4 @@ __decorate([
 __decorate([
     logPerformance(true)
 ], TradingController.prototype, "add", null);
+//# sourceMappingURL=tradingController.js.map
