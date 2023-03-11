@@ -11,4 +11,10 @@ export class Trades {
     list() {
         return this.trades;
     }
+    equals(trades) {
+        return JSON.stringify(this.trades) === JSON.stringify(trades.list);
+    }
+    toPrettyString() {
+        return JSON.stringify(this.trades);
+    }
 }

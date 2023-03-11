@@ -23,4 +23,9 @@ export class Trade {
         Quantity: ${this.quantity}
         Value: ${this.value}`;
     }
+    equals(trade) {
+        return this._date.getDate() === trade._date.getDate() &&
+            this._date.getMonth() == trade._date.getMonth() &&
+            this._date.getFullYear() == trade._date.getFullYear();
+    }
 }

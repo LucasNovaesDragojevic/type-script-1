@@ -35,6 +35,7 @@ export class TradingController {
     importData() {
         this.tradeService
             .getTradesOfDay()
+            .then(tradesToday => tradesToday.filter(tradeToday => !this.trades.list().some(trade => trade.equals(tradeToday))))
             .then(tradesToday => {
             this.trades.addAll(tradesToday);
             this.tradeView.update(this.trades);

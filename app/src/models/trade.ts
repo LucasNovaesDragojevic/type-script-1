@@ -1,6 +1,6 @@
-import { Logable } from '../utils/Logable.js'
+import { Model } from '../interfaces/model.js'
 
-export class Trade implements Logable{
+export class Trade implements Model<Trade> {
     constructor(
         private _date: Date, 
         readonly quantity: number, 
@@ -28,5 +28,11 @@ export class Trade implements Logable{
         Date: ${this._date}
         Quantity: ${this.quantity}
         Value: ${this.value}`
+    }
+    
+    equals(trade: Trade) {
+        return this._date.getDate() === trade._date.getDate() &&
+            this._date.getMonth() == trade._date.getMonth() &&
+            this._date.getFullYear() == trade._date.getFullYear()
     }
 }
