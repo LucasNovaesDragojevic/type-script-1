@@ -4,6 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+import { domInject } from '../decorators/domInject.js';
 import { logPerformance } from '../decorators/logPerformance.js';
 import { DayOfWeek } from '../enums/dayOfWeek.js';
 import { Trade } from '../models/trade.js';
@@ -15,9 +16,6 @@ export class TradingController {
         this.trades = new Trades();
         this.tradeView = new TradeView('#tradeView');
         this.messageView = new MessageView('#messageView');
-        this.inputDate = document.querySelector('#date');
-        this.inputQuantity = document.querySelector('#quantity');
-        this.inputValue = document.querySelector('#value');
         this.tradeView.update(this.trades);
     }
     add() {
@@ -45,6 +43,15 @@ export class TradingController {
         this.inputDate.focus();
     }
 }
+__decorate([
+    domInject('#date')
+], TradingController.prototype, "inputDate", void 0);
+__decorate([
+    domInject('#quantity')
+], TradingController.prototype, "inputQuantity", void 0);
+__decorate([
+    domInject('#value')
+], TradingController.prototype, "inputValue", void 0);
 __decorate([
     logPerformance(true)
 ], TradingController.prototype, "add", null);

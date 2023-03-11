@@ -1,3 +1,4 @@
+import { domInject } from '../decorators/domInject.js'
 import { logPerformance } from '../decorators/logPerformance.js'
 import { DayOfWeek } from '../enums/dayOfWeek.js'
 import { Trade } from '../models/trade.js'
@@ -6,17 +7,21 @@ import { MessageView } from '../views/messageView.js'
 import { TradeView } from '../views/tradeView.js'
 
 export class TradingController {
+    
+    @domInject('#date')
     private inputDate: HTMLInputElement
+    
+    @domInject('#quantity')
     private inputQuantity: HTMLInputElement
+    
+    @domInject('#value')
     private inputValue: HTMLInputElement
+    
     private trades = new Trades()
     private tradeView = new TradeView('#tradeView')
     private messageView = new MessageView('#messageView')
 
     constructor() {
-        this.inputDate = document.querySelector('#date') as HTMLInputElement
-        this.inputQuantity = document.querySelector('#quantity') as HTMLInputElement
-        this.inputValue = document.querySelector('#value') as HTMLInputElement
         this.tradeView.update(this.trades)
     }
 
