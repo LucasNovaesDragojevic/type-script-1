@@ -1,3 +1,4 @@
+import { logPerformance } from '../decorators/logPerformance.js'
 import { DayOfWeek } from '../enums/dayOfWeek.js'
 import { Trade } from '../models/trade.js'
 import { Trades } from '../models/trades.js'
@@ -19,6 +20,7 @@ export class TradingController {
         this.tradeView.update(this.trades)
     }
 
+    @logPerformance()
     add() {
         const trade = Trade.createFrom(this.inputDate.value, this.inputQuantity.value, this.inputValue.value)
 

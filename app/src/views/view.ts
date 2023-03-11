@@ -1,3 +1,5 @@
+import { logPerformance } from "../decorators/logPerformance.js"
+
 export abstract class View<T> {
     protected element: HTMLElement
     private escape
@@ -14,6 +16,7 @@ export abstract class View<T> {
 
     protected abstract template(model: T): string
 
+    @logPerformance()
     update(model: T): void {
         let template = this.template(model)
         if (this.escape) {
