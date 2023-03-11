@@ -20,7 +20,7 @@ export class TradingController {
         this.tradeView.update(this.trades)
     }
 
-    @logPerformance()
+    @logPerformance(true)
     add() {
         const trade = Trade.createFrom(this.inputDate.value, this.inputQuantity.value, this.inputValue.value)
 

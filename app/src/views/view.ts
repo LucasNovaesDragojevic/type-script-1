@@ -1,3 +1,4 @@
+import { inspect } from "../decorators/inspect.js"
 import { logPerformance } from "../decorators/logPerformance.js"
 
 export abstract class View<T> {
@@ -17,6 +18,7 @@ export abstract class View<T> {
     protected abstract template(model: T): string
 
     @logPerformance()
+    @inspect()
     update(model: T): void {
         let template = this.template(model)
         if (this.escape) {

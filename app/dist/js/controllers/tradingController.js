@@ -46,5 +46,5 @@ export class TradingController {
     }
 }
 __decorate([
-    logPerformance()
+    logPerformance(true)
 ], TradingController.prototype, "add", null);
