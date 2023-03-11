@@ -13,7 +13,7 @@ import { TradeView } from '../views/tradeView.js';
 export class TradingController {
     constructor() {
         this.trades = new Trades();
-        this.tradeView = new TradeView('#tradeView', true);
+        this.tradeView = new TradeView('#tradeView');
         this.messageView = new MessageView('#messageView');
         this.inputDate = document.querySelector('#date');
         this.inputQuantity = document.querySelector('#quantity');

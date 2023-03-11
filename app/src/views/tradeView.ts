@@ -1,9 +1,11 @@
+import { escape } from "../decorators/escape.js"
 import { Trade } from "../models/trade.js"
 import { Trades } from "../models/trades.js"
 import { View } from "./view.js"
 
 export class TradeView extends View<Trades> {
 
+    @escape
     protected template(trades: Trades): string {
         return `
             <table class="table table-hover table-bordered">
@@ -24,6 +26,7 @@ export class TradeView extends View<Trades> {
                             </tr>
                         `
                     }).join('')}
+                    <script></script>
                 </tbody>
             </table>
         `

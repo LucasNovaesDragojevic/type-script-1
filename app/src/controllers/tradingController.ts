@@ -10,7 +10,7 @@ export class TradingController {
     private inputQuantity: HTMLInputElement
     private inputValue: HTMLInputElement
     private trades = new Trades()
-    private tradeView = new TradeView('#tradeView', true)
+    private tradeView = new TradeView('#tradeView')
     private messageView = new MessageView('#messageView')
 
     constructor() {
