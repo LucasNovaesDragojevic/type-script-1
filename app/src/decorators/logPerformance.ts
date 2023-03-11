@@ -15,7 +15,7 @@ export function logPerformance(showSeconds: boolean = false) {
             const t1 = performance.now()
             const returnOfMethod = originalMethod.apply(this, args)
             const t2 = performance.now()
-            console.log(`${propertyKey}, execution time: ${(t2-t1)/divider} ${unit}.`)
+            // console.log(`${propertyKey}, execution time: ${(t2-t1)/divider} ${unit}.`)
             returnOfMethod
         }
         return descriptor

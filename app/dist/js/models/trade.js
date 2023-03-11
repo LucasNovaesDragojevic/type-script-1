@@ -17,4 +17,10 @@ export class Trade {
         const value = parseFloat(valueString);
         return new Trade(date, quantity, value);
     }
+    toPrettyString() {
+        return `
+        Date: ${this._date}
+        Quantity: ${this.quantity}
+        Value: ${this.value}`;
+    }
 }

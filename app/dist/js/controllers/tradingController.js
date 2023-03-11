@@ -10,6 +10,7 @@ import { DayOfWeek } from '../enums/dayOfWeek.js';
 import { Trade } from '../models/trade.js';
 import { Trades } from '../models/trades.js';
 import { TradeService } from '../services/tradeService.js';
+import { Log } from '../utils/log.js';
 import { MessageView } from '../views/messageView.js';
 import { TradeView } from '../views/tradeView.js';
 export class TradingController {
@@ -22,12 +23,12 @@ export class TradingController {
     }
     add() {
         const trade = Trade.createFrom(this.inputDate.value, this.inputQuantity.value, this.inputValue.value);
+        Log(trade);
         if (!this.isBusinessDay(trade.date)) {
             this.messageView.update('Only business days are accepted.');
             return;
         }
         this.trades.add(trade);
-        console.log(this.trades.list());
         this.updateView();
         this.clearForm();
     }

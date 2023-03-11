@@ -3,7 +3,7 @@ export function domInject(selector: string) {
         let element: HTMLElement
         const getter = function() {
             if (!element) {
-                console.log(`taking DOM element with selector ${selector} to inject ${propertyKey}`)
+                // console.log(`taking DOM element with selector ${selector} to inject ${propertyKey}`)
                 element = document.querySelector(selector) as HTMLElement
             }
             return element

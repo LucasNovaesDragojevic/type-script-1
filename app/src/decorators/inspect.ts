@@ -6,10 +6,10 @@ export function inspect() {
     ) {
         const originalMethod = descriptor.value
         descriptor.value = function (...args: any[]) {
-            console.log(`Method ${propertyKey}`)
-            console.log(`Parameters ${JSON.stringify(args)}`)
+            // console.log(`Method ${propertyKey}`)
+            // console.log(`Parameters ${JSON.stringify(args)}`)
             const returnOfMethod = originalMethod.apply(this, args)
-            console.log(`Return: ${JSON.stringify(returnOfMethod)}`)
+            // console.log(`Return: ${JSON.stringify(returnOfMethod)}`)
             return returnOfMethod
         }
         return descriptor
